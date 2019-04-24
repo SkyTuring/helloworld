@@ -1,22 +1,25 @@
 stages:
-- name: 编译
+- name: compile
   steps:
   - runScriptConfig:
-      image: java:8
-      shellScript: mvn package
-- name: 打包
+      image: maven:v1
+      shellScript: mvn clean package
+- name: publish
   steps:
-  - runScriptConfig:
-      image: java:8
-      shellScript: |-
-        FROM java:8
-        VOLUME /tmp
-        ADD /target/*.jar app.jar
-        COPY startup.sh /startup.sh
-        ENV TZ=Asia/Shanghai
-        RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-        RUN bash -c 'touch /app.jar'
-        CMD ["sh", "/startup.sh"]
-        EXPOSE 8080
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: hello/demo:v3
+      pushRemote: true
+      registry: 127.0.0.1:34223
+    env:
+      PLUGIN_DEBUG: "true"
+      PLUGIN_INSECURE: "true"
+- name: deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
 timeout: 60
-notification: {}
+branch:
+  include:
+  - master
