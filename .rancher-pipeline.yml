@@ -9,9 +9,9 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: best/hello:v3
+      tag: test/hello:1.0
       pushRemote: true
-      registry: reg.800best.com
+      registry: 127.0.0.1:34332
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
