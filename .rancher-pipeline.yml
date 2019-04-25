@@ -9,7 +9,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: test/hello:1.0
+      tag: test/hello:1.1
       pushRemote: true
       registry: reg.800best.com
     env:
