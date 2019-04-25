@@ -22,9 +22,9 @@ kind: Service
 metadata:
   name: hello-svc
 spec:
-  validate: false
   type: NodePort
   selector:
+    validate: false
     app: demo
   ports:
     - protocol: TCP
