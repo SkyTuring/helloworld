@@ -2,7 +2,7 @@ stages:
 - name: compile
   steps:
   - runScriptConfig:
-      image: maven:3.5.4
+      image: reg.800best.com/bestapp/bestmvn:3.3.9
       shellScript: mvn clean package
 - name: publish
   steps:
