@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: demo
-          image: 127.0.0.1:34890/test/hello:1.0
+          image: reg.800best.com/test/hello:1.0
           ports:
             - containerPort: 8080
 
