@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: demo
-          image: reg.800best.com/${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+          image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
           ports:
             - containerPort: 8080
 
