@@ -9,7 +9,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: test/hello:1.1
+      tag: test/hello:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: reg.800best.com
     env:
