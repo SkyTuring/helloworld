@@ -1,5 +1,4 @@
 FROM java:8
-MAINTAINER fu
 VOLUME /tmp
 ADD /target/*.jar app.jar
 COPY startup.sh /startup.sh
