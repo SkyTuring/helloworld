@@ -1,5 +1,7 @@
 package com.fuyq.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,11 +13,24 @@ import org.springframework.web.bind.annotation.RestController;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/")
 public class TestController {
+
+    public static int count = 0;
+
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/hello")
     private String test(){
-        return "hello world";
+        logger.info("测试日志1：{}",count++);
+        return "hello world"+count;
+    }
+
+
+    @GetMapping("/")
+    private String test2(){
+        logger.info("测试日志2：{}",count++);
+        return "hello world!!!!!!!!!!"+count;
+
     }
 }
